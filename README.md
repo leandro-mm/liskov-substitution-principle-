@@ -251,8 +251,14 @@ A suíte de testes verifica **pré-condições** (entradas inválidas lançam ex
 │       └── ContaSemSaqueContractViolationTests.cs
 └── README.md
 ```
-
 ## Como executar os testes
+
+## Considerações importantes
+Não confundir os testes com contrato em runtime: 
+- Os testes verificam exemplos específicos;
+- DbC (com guard clauses) verifica o contrato em toda execução.
+- Ambos são complementares: os testes documentam e previnem regressões, enquanto as guard clauses garantem que violações sejam detectadas em produção .
+- FluentAssertions e exceções: Por padrão, Throw<T>() aceita subclasses de T. Se quiser o tipo exato, use ThrowExactly<T>() .
 
 ```bash
 dotnet test
